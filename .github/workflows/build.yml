@@ -1,0 +1,54 @@
+name: Generate artifacts
+on:
+    push:
+        branches:
+          - main        
+    workflow_dispatch:
+jobs:
+    generate:
+        name: generate
+        runs-on: ubuntu-22.04
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-python@v5
+              with:
+                python-version: '3.10'
+            - uses: actions/setup-node@v4
+            - uses: actions/cache@v4
+              with:
+                path: ~/.cache/pip
+                key: ${{ runner.os }}-pip
+            - name: Install python dependencies
+              run: |
+                pip install notebook jupytext
+            - name: Install node dependencies
+              run: |
+                npm ci
+            - name: Checkout build123d dev branch and build
+              run: |
+                pip install build123d "cadquery-ocp<7.8"
+            - name: Execute jupyter notebooks on dev branch
+              run: |
+                set -x
+                INPUTS_FOLDER="projects"
+                OUTPUTS_FOLDER="generated_outputs"
+                mkdir -p $OUTPUTS_FOLDER
+                for file in $INPUTS_FOLDER/*.py; do
+                  STEM=$(basename "$file" .py) 
+                  jupytext --to notebook $INPUTS_FOLDER/${STEM}.py --output $OUTPUTS_FOLDER/${STEM}.ipynb                      
+                  jupyter nbconvert --to notebook --execute --output ${STEM}_executed.ipynb $OUTPUTS_FOLDER/${STEM}.ipynb
+                  jupyter nbconvert --to html --execute --output ${STEM}.html  $OUTPUTS_FOLDER/${STEM}.ipynb                                            
+                done                
+            - name: Generate rendered images of html
+              run: |
+                node render.js
+            - name: Generated outputs
+              run: |
+                tree .
+            - run: |
+                git config user.name "github-actions[bot]"
+                git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+                git add -f generated_outputs
+                git commit -m "github action ${{github.run_number}}"
+                git push
+            

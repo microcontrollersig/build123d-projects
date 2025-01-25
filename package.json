@@ -1,0 +1,13 @@
+{
+    "name": "build123d-projects",
+    "version": "1.0.0",
+    "description": "",
+    "main": "render.js",
+    "type": "module",
+    "dependencies": {
+      "puppeteer": "^24.1.0"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
+  }
