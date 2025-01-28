@@ -2,7 +2,9 @@ name: Generate artifacts
 on:
     push:
         branches:
-          - main        
+          - main
+        paths:
+          - "projects/*.py"        
     workflow_dispatch:
 jobs:
     generate:
