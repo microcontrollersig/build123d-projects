@@ -44,8 +44,8 @@ jobs:
           for file in $INPUTS_FOLDER/*.py; do
             STEM=$(basename "$file" .py)
             jupytext --to notebook $INPUTS_FOLDER/${STEM}.py --output $OUTPUTS_FOLDER/${STEM}.ipynb
-            jupyter nbconvert --to notebook --execute --output $OUTPUTS_FOLDER/${STEM}_executed.ipynb $OUTPUTS_FOLDER/${STEM}.ipynb
-            jupyter nbconvert --to html --execute --output $OUTPUTS_FOLDER/${STEM}.html $OUTPUTS_FOLDER/${STEM}.ipynb
+            jupyter nbconvert --to notebook --execute --output ${STEM}_executed.ipynb $OUTPUTS_FOLDER/${STEM}.ipynb
+            jupyter nbconvert --to html --execute --output ${STEM}.html $OUTPUTS_FOLDER/${STEM}.ipynb
           done
       
       - name: Generate rendered images

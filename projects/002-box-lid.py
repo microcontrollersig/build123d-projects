@@ -17,9 +17,6 @@ fontsz, fontht = 12.0, 0.2
 pad_diameter = 7 * MM
 pad_hole_diam = 3.0 * MM
 
-# Computed parameters
-
-
 # Main design
 with BuildPart() as box_builder:
     with BuildSketch() as plan:
