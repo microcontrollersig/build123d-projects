@@ -44,6 +44,23 @@ jobs:
             - name: Generate rendered images of html
               run: |
                 node render.js
+            - name: Generate README.md inside generated_output
+      - name: Generate README
+        run: |
+          # Write the header
+          echo "# Projects" > README.md
+          echo >> README.md  # Add an empty line
+
+          # Process each .py file in the projects directory
+          for file in projects/*.py; do
+            filename=$(basename "$file")  # e.g., "001-sacrificial-table.py"
+            base="${filename%.*}"  # Remove .py extension (e.g., "001-sacrificial-table")
+
+            # Generate links and append to README
+            echo "$filename: [Live Demo](https://nbviewer.org/github/microcontrollersig/build123d-projects/blob/main/generated_outputs/${base}_executed.py) | [Source Code](https://github.com/microcontrollersig/build123d-projects/blob/main/projects/$filename)" >> README.md
+          done
+
+              
             - name: Generated outputs
               run: |
                 tree .
