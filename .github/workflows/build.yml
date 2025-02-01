@@ -63,7 +63,7 @@ jobs:
           for file in projects/*.py; do
             filename=$(basename "$file")
             base="${filename%.*}"
-            echo "$filename: [Live Demo](https://nbviewer.org/github/microcontrollersig/build123d-projects/blob/main/generated_outputs/${base}_executed.ipynb) | [Source Code](https://github.com/microcontrollersig/build123d-projects/blob/main/projects/$filename)" >> README.md
+            echo "** $filename ** : [Live Demo](https://nbviewer.org/github/microcontrollersig/build123d-projects/blob/main/generated_outputs/${base}_executed.ipynb) | [Source Code](https://github.com/microcontrollersig/build123d-projects/blob/main/projects/$filename)" >> README.md
             echo >> README.md
           done
       
