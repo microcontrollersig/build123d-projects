@@ -59,15 +59,14 @@ jobs:
             # Generate links and append to README
             echo "$filename: [Live Demo](https://nbviewer.org/github/microcontrollersig/build123d-projects/blob/main/generated_outputs/${base}_executed.py) | [Source Code](https://github.com/microcontrollersig/build123d-projects/blob/main/projects/$filename)" >> README.md
           done
-
-              
-            - name: Generated outputs
-              run: |
-                tree .
-            - run: |
-                git config user.name "github-actions[bot]"
-                git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-                git add -f generated_outputs
-                git commit -m "github action ${{github.run_number}}"
-                git push
+       
+      - name: Generated outputs
+        run: |
+          tree .
+      - run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f generated_outputs
+          git commit -m "github action ${{github.run_number}}"
+          git push
             
