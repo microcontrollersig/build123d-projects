@@ -55,7 +55,11 @@ jobs:
       - name: Generate README
         run: |
           echo "# Projects" > README.md
+          echo "# Build123d Projects" >> README.md
+          echo "For instructions for how to setup VSCode and build123d environment, see " >> README.md
+          echo "[here](https://github.com/microcontrollersig/build123fromscratch)" >> README.md
           echo >> README.md
+          
           for file in projects/*.py; do
             filename=$(basename "$file")
             base="${filename%.*}"
