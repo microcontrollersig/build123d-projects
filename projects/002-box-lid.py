@@ -90,8 +90,4 @@ boxLid.color = Color = "Red"
 box_assembly = Compound(label="assembly", children=[box_builder.part,boxLid.part.moved(Location((0, 0, 0)))])
 box_assembly
 #show_all()
-#show_object(box_assembly)
-# show_object(box_builder.part, "box_builder")
-# show_object(boxLid, "box_lid")
-#export_step(box_assembly, "box_assembly.step")
-#export_step(box_builder.part, "box_builderPwrH4.step")
+
