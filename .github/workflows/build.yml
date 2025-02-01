@@ -59,11 +59,11 @@ jobs:
           echo "For instructions for how to setup VSCode and build123d environment, see " >> README.md
           echo "[here](https://github.com/microcontrollersig/build123fromscratch)" >> README.md
           echo >> README.md
-          
+
           for file in projects/*.py; do
             filename=$(basename "$file")
             base="${filename%.*}"
-            echo "$filename: [Live Demo](https://nbviewer.org/github/microcontrollersig/build123d-projects/blob/main/generated_outputs/${base}_executed.py) | [Source Code](https://github.com/microcontrollersig/build123d-projects/blob/main/projects/$filename)" >> README.md
+            echo "$filename: [Live Demo](https://nbviewer.org/github/microcontrollersig/build123d-projects/blob/main/generated_outputs/${base}_executed.ipynb) | [Source Code](https://github.com/microcontrollersig/build123d-projects/blob/main/projects/$filename)" >> README.md
           done
       
       - name: Show generated outputs
