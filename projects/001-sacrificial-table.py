@@ -5,11 +5,9 @@ from build123d import *
 length = 1260
 width = 775
 height = 25
-
 x_offset = 30
 y1_offset = 30
 y2_offset = 45
-
 spacing_small = 50
 spacing_large = 100
 
