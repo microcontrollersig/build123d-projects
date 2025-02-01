@@ -2,20 +2,25 @@ from typing import Literal
 from build123d import *
 #from ocp_vscode import show_all, Camera
 
-# card_width = 2.5 * IN
+# Parameters
 card_width = 65.5 * MM
-# card_length = 3.5 * IN
 card_length = 80.0 * MM
-# height = 0.5 * IN
 height = 12 * MM
 wall = 3 * MM
 gap = 0.5 * MM
 pad_spacingX = 50.5 * MM
 pad_spacingY = 48 * MM
 pad_height = 4 * MM
+fontsz, fontht = 12.0, 0.2
+
+# Radius and diameters
 pad_diameter = 7 * MM
 pad_hole_diam = 3.0 * MM
-fontsz, fontht = 12.0, 0.2
+
+# Computed parameters
+
+
+# Main design
 with BuildPart() as box_builder:
     with BuildSketch() as plan:
         Rectangle(card_width + 2 * wall, card_length + 2 * wall)
